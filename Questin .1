@@ -1,0 +1,52 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package vupay;
+
+import java.util.Scanner;
+
+public class VUCourses {
+
+    public static void main(String[] args) {
+
+        String moduleCode;
+        String moduleName = "";
+        int tuition = 0;
+        boolean isValid = true;
+
+        // Using try-with-resources to automatically close the scanner
+        try (Scanner input = new Scanner(System.in)) {
+            System.out.println("--- Victoria University VUPay System ---");
+            System.out.print("Please enter the Module Code: ");
+            moduleCode = input.nextLine().toUpperCase();
+
+            // Modern Java switch expression
+            switch (moduleCode) {
+                case "BSF" -> {
+                    moduleName = "BSc. Software Engineering";
+                    tuition = 900000;
+                }
+                case "BIT" -> {
+                    moduleName = "BSc. Information Technology";
+                    tuition = 850000;
+                }
+                case "BCS" -> {
+                    moduleName = "BSc. Computer Science";
+                    tuition = 950000;
+                }
+                default -> {
+                    System.out.println("Invalid Module Code entered.");
+                    isValid = false;
+                }
+            }
+
+            // Display results if the code was found
+            if (isValid) {
+                System.out.println("\n--- Course Details ---");
+                System.out.println("Course Name: " + moduleName);
+                System.out.println("Tuition Fee: " + tuition + " UGX");
+            }
+        }
+    }
+}
